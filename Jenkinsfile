@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
+        stage('npm') {
             agent {
                 docker {
                     image 'node:17-bullseye'
@@ -10,6 +10,9 @@ pipeline {
             steps {
                 sh 'dir'
                 sh 'node --version'
+                sh 'cd ./DotnetTemplate.Web'
+                sh 'npm install'
+                sh 'npm run build'
             }
         }
         stage('.net') {
@@ -25,6 +28,7 @@ pipeline {
             steps {
                 sh 'dir'
                 sh 'dotnet build'
+                sh 'dotnet test'
             }
         }
     }
