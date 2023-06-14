@@ -8,6 +8,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'dir'
                 sh 'node --version'
             }
         }
@@ -18,6 +19,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'dir'
                 sh 'dotnet build'
             }
         }
