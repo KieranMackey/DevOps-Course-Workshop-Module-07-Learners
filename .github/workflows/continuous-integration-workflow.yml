@@ -8,13 +8,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
     - run: dotnet build
-    - run: cd DotnetTemplate.Web
-    - run: ls
-    - run: npm install
-    - run: npm run build
-    - run: cd ..
+    - run: cd ./DotnetTemplate.Web && npm install
+    - run: |
+        cd ./DotnetTemplate.Web
+        npm run build
     - run: dotnet test
-    - run: cd DotnetTemplate.Web
-    - run: npm t
-    - run: npm run lint
-    - run: dotnet run
+    - run: |
+        cd ./DotnetTemplate.Web
+        npm t
+    - run: |
+        cd ./DotnetTemplate.Web
+        npm run lint
+    - run: |
+        cd ./DotnetTemplate.Web
+        dotnet run
